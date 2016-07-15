@@ -29,6 +29,7 @@
 			<h:outputText value="Street"/>
 			<h:outputText value="#{backingBean.newThing.description}"/>
 		    </b:panelGrid>
+		    <b:commandButton value="Save" onclick="ajax:backingBean.saveThing()"/>
 		</b:panel>
 	    </b:carouselItem>
 	    <b:carouselControl direction="right" >
@@ -39,7 +40,7 @@
 	    <b:carouselControl direction="left">
 		<b:commandButton value="next step" role="button" style="position:absolute;right:0px"
 				 onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
-				 look="success" />
+				 look="success" process="@form" />
 	    </b:carouselControl>
 	</b:carousel>
 

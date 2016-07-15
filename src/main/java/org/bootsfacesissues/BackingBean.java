@@ -64,6 +64,11 @@ public class BackingBean implements Serializable {
     public void editThing(Thing thing) {
 
     }
+    
+    public void saveThing() {
+	thingsList.add(newThing);
+	thingsList = new ArrayList<>();
+    }
 
     public Thing getNewThing() {
 	return newThing;
