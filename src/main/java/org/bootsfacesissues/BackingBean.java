@@ -19,14 +19,16 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class BackingBean implements Serializable {
-    
+
     private List<Thing> thingsList;
+    private Thing newThing;
 
     public BackingBean() {
     }
-    
+
     @PostConstruct
     private void init() {
+	newThing = new Thing();
 	thingsList = new ArrayList<>();
 	Thing thing1 = new Thing();
 	thing1.setId(1);
@@ -40,11 +42,11 @@ public class BackingBean implements Serializable {
 	thing3.setId(3);
 	thing3.setName("name3");
 	thing3.setDescription("description2");
-	
+
 	thingsList.add(thing1);
 	thingsList.add(thing2);
 	thingsList.add(thing3);
-		
+
     }
 
     public List<Thing> getThingsList() {
@@ -54,13 +56,21 @@ public class BackingBean implements Serializable {
     public void setThingsList(List<Thing> thingsList) {
 	this.thingsList = thingsList;
     }
-    
+
     public void deleteThing(Thing thing) {
 	thingsList.remove(thing);
     }
-    
+
     public void editThing(Thing thing) {
-	
+
     }
-    
+
+    public Thing getNewThing() {
+	return newThing;
+    }
+
+    public void setNewThing(Thing newThing) {
+	this.newThing = newThing;
+    }
+
 }
