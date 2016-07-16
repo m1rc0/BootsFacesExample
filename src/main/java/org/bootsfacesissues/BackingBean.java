@@ -21,12 +21,14 @@ import javax.inject.Named;
 public class BackingBean implements Serializable {
     
     private List<Thing> thingsList;
+    private Thing newThing;
 
     public BackingBean() {
     }
     
     @PostConstruct
     private void init() {
+        newThing = new Thing();
 	thingsList = new ArrayList<>();
 	Thing thing1 = new Thing();
 	thing1.setId(1);
@@ -61,6 +63,19 @@ public class BackingBean implements Serializable {
     
     public void editThing(Thing thing) {
 	
+    }
+    
+    public void saveThing() {
+        thingsList.add(newThing);
+        newThing = new Thing();
+    }
+
+    public Thing getNewThing() {
+        return newThing;
+    }
+
+    public void setNewThing(Thing newThing) {
+        this.newThing = newThing;
     }
     
 }
