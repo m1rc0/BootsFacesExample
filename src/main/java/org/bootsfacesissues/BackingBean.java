@@ -36,7 +36,6 @@ public class BackingBean implements Serializable {
     @PostConstruct
     private void init() {
 	newThing = new Thing();
-        newThing = new Thing();
 	thingsList = new ArrayList<>();
 	Thing thing1 = new Thing();
 	thing1.setId(1);
