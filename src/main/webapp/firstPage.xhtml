@@ -2,48 +2,59 @@
 	     xmlns:h="http://xmlns.jcp.org/jsf/html"
 	     xmlns:b="http://bootsfaces.net/ui"
 	     xmlns:f="http://xmlns.jcp.org/jsf/core"
-	     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	     xmlns:p="http://primefaces.org/ui"
+	     xmlns:ct="http://www.chartistjsf.org/charts">
     <b:row>
 
-	<h1>Index First Content</h1>
-	<b:carousel id="wizard" styleClass="wizardPseudoClass"
-		    style="width:400px;height:350px;padding-top:20px"
-		    startAnimation="false"
-		    showIndicators="false"
-		    wrap="false">
-	    <b:carouselItem style="width:400px;height:230px">
-		<b:panel title="Step 1" look="primary">
-		    <b:inputText label="First name" renderLabel="true" value="#{backingBean.newThing.name}"/>
-		</b:panel>
-	    </b:carouselItem>
-	    <b:carouselItem style="width:400px;height:230px">
-		<b:panel title="Step 2" look="danger  ">
-		    <b:inputText label="Street"  renderLabel="true" value="#{backingBean.newThing.description}"/>
-		</b:panel>
-	    </b:carouselItem>
-	    <b:carouselItem style="width:400px;height:230px">
-		<b:panel title="Step 3" look="success">
-		    <b:panelGrid columns="2">
-			<h:outputText value="First Name"/>
-			<h:outputText value="#{backingBean.newThing.name}"/>
-			<h:outputText value="Street"/>
-			<h:outputText value="#{backingBean.newThing.description}"/>
-		    </b:panelGrid>
-		    <b:commandButton value="Save" onclick="ajax:backingBean.saveThing()"/>
-		</b:panel>
-	    </b:carouselItem>
-	    <b:carouselControl direction="right" >
-		<b:commandButton value="previous step" role="button"
-				 onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause'); return false;"
-				 look="info" />
-	    </b:carouselControl>
-	    <b:carouselControl direction="left">
-		<b:commandButton value="next step" role="button" style="position:absolute;right:0px"
-				 onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause'); return false;"
-				 look="success" process="@form" />
-	    </b:carouselControl>
-	</b:carousel>
 
+	<p:chart type="line" model="#{backingBean.lineModel1}" style="height:300px;"/>
     </b:row>
+    <b:row>
+	<ct:chart id="lineChart" type="line" model="#{backingBean.lineModel2}" style="height:300px;"/>
+    </b:row>
+
+
+    <!--	<b:carousel id="wizard" styleClass="wizardPseudoClass"
+			style="width:400px;height:350px;padding-top:20px"
+			startAnimation="false"
+			showIndicators="false"
+			wrap="false">
+		<b:carouselItem style="width:400px;height:230px">
+		    <b:panel title="Step 1" look="primary">
+			<b:inputText label="First name" renderLabel="true" value="#{backingBean.newThing.name}"/>
+		    </b:panel>
+		</b:carouselItem>
+		<b:carouselItem style="width:400px;height:230px">
+		    <b:panel title="Step 2" look="danger  ">
+			<b:inputText label="Street"  renderLabel="true" value="#{backingBean.newThing.description}"/>
+		    </b:panel>
+		</b:carouselItem>
+		<b:carouselItem style="width:400px;height:230px">
+		    <b:panel title="Step 3" look="success" >
+			<b:panelGrid columns="2" styleClass="result">
+			    <h:outputText value="First Name"/>
+			    <h:outputText value="#{backingBean.newThing.name}"/>
+			    <h:outputText value="Street"/>
+			    <h:outputText value="#{backingBean.newThing.description}" />
+			</b:panelGrid>
+			<b:commandButton look="success" value="Save" actionListener="#{backingBean.saveThing()}"/>
+		    </b:panel>
+		</b:carouselItem>
+		<b:carouselControl direction="right" >
+		    <b:commandButton value="previous step" role="button"
+				     update="@(.result)"
+				     onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');ajax:backingBean.dummyAction();"
+				     look="info" />
+		</b:carouselControl>
+		<b:carouselControl direction="left">
+		    <b:commandButton value="next step" role="button" style="position:absolute;right:0px"
+				     update="@(.result)"
+				     onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');ajax:backingBean.dummyAction();"
+				     look="success" />
+		</b:carouselControl>
+	    </b:carousel>-->
+
+
 </ui:fragment>
 
